@@ -1,35 +1,27 @@
-# ESP32 NFC Reader PWA Server
+# ESP32 NFC Reader PWA Server (PlatformIO)
 
-This project hosts a Progressive Web App (PWA) on an ESP32 that can read NFC tags using a compatible smartphone's browser.
+This project hosts a Progressive Web App (PWA) on an ESP32 that can read NFC tags using a compatible smartphone's browser. This version is configured for use with PlatformIO.
 
 ## Prerequisites
 
-1.  **Arduino IDE:** Make sure you have the Arduino IDE installed.
-2.  **ESP32 Board Support:** Ensure you have the ESP32 board support package installed in your Arduino IDE. You can find instructions [here](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html).
-
-## Required Libraries
-
-You need to install the following libraries through the Arduino Library Manager:
-
-1.  **ESPAsyncWebServer:** Go to `Sketch > Include Library > Manage Libraries...` and search for `ESPAsyncWebServer`.
-2.  **AsyncTCP:** `ESPAsyncWebServer` depends on this library. Search for `AsyncTCP` in the Library Manager and install it.
+1.  **Visual Studio Code:** Make sure you have VS Code installed.
+2.  **PlatformIO IDE Extension:** Install the official PlatformIO IDE extension from the VS Code Marketplace.
 
 ## Setup Instructions
+
+PlatformIO will automatically handle the installation of the required libraries (`ESPAsyncWebServer` and its dependencies) when you build the project for the first time.
 
 ### 1. Upload Filesystem Data (SPIFFS)
 
 The PWA files (`index.html`, `styles.css`, etc.) need to be uploaded to the ESP32's SPIFFS (SPI Flash File System).
 
-1.  **Install the Upload Tool:** You need the "ESP32 Sketch Data Upload" tool. Follow the installation instructions [here](https://github.com/me-no-dev/arduino-esp32fs-plugin).
-2.  **Place Files:** Make sure all the web files (`index.html`, `styles.css`, `script.js`, `manifest.json`, `service-worker.js`) are in the `data` directory inside your sketch folder (`esp32_nfc_server`).
-3.  **Upload:** In the Arduino IDE, go to `Tools > ESP32 Sketch Data Upload`. This will upload the contents of the `data` directory to the ESP32's SPIFFS.
+1.  **Place Files:** Make sure all the web files (`index.html`, `styles.css`, `script.js`, `manifest.json`, `service-worker.js`) are in the `data` directory inside the project folder.
+2.  **Upload:** In VS Code, open the PlatformIO sidebar, find your project environment (e.g., `esp32dev`), and under the "Platform" section, click on "Upload Filesystem Image". This will build the SPIFFS image and upload it to the ESP32.
 
-### 2. Upload the Arduino Sketch
+### 2. Build and Upload the Main Application
 
-1.  Open the `esp32_nfc_server.ino` file in the Arduino IDE.
-2.  Select your ESP32 board from `Tools > Board`.
-3.  Select the correct COM port from `Tools > Port`.
-4.  Click the "Upload" button to compile and upload the sketch to your ESP32.
+1.  After uploading the filesystem, you can build and upload the main application code.
+2.  In the PlatformIO sidebar, under the "Project Tasks" section for your environment, click on "Upload". This will compile the source code and upload the firmware to the ESP32.
 
 ## How to Use
 
